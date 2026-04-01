@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asin | Classical Dancer (@dancewithasin)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@200;300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --velvet: #2d0a0c;
+            --gold-leaf: #c5a059;
+            --silk: #fcfaf2;
+            --charcoal: #1a1a1a;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--silk);
+            color: var(--velvet);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .font-serif {
+            font-family: 'Bodoni Moda', serif;
+            letter-spacing: -0.02em;
+        }
+
+        .custom-cursor {
+            width: 24px;
+            height: 24px;
+            border: 1px solid var(--gold-leaf);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s ease;
+            display: none;
+        }
+        @media (min-width: 1024px) { .custom-cursor { display: block; } }
+
+        .section-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .section-reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .split-image {
+            height: 85vh;
+            object-fit: cover;
+            clip-path: inset(0 100% 0 0);
+            transition: clip-path 1.8s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+
+        .section-reveal.active .split-image {
+            clip-path: inset(0 0 0 0);
+        }
+
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        .image-overlay-card {
+            position: relative;
+            overflow: hidden;
+            background: var(--charcoal);
+        }
+        
+        .image-overlay-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(45, 10, 12, 0.9) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .image-overlay-card:hover::after {
+            opacity: 1;
+        }
+
+        .nav-scrolled {
+            background: rgba(252, 250, 242, 0.98);
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(197, 160, 89, 0.1);
+        }
+
+        @keyframes slow-zoom {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.15); }
+        }
+        .animate-slow-zoom {
+            animation: slow-zoom 25s infinite alternate ease-in-out;
+        }
+        
+        .insta-grid-item {
+            transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        .insta-grid-item:hover {
+            transform: translateY(-10px);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="custom-cursor" id="cursor"></div>
+
+    <!-- Minimalist Navigation -->
+    <nav id="main-nav" class="fixed w-full z-50 transition-all duration-500 py-8 px-6 md:px-12">
+        <div class="max-w-[1800px] mx-auto flex justify-between items-center">
+            <a href="#" class="text-2xl md:text-3xl font-serif font-bold tracking-tighter">ASIN.</a>
+            
+            <div class="hidden lg:flex items-center space-x-12 text-[10px] uppercase tracking-[0.4em] font-semibold">
+                <a href="#about" class="hover:text-gold-leaf transition">Identity</a>
+                <a href="#gallery" class="hover:text-gold-leaf transition">Archives</a>
+                <a href="#artistry" class="hover:text-gold-leaf transition">The Craft</a>
+                <a href="#contact" class="hover:text-gold-leaf transition">Inquire</a>
+                <a href="https://instagram.com/dancewithasin" target="_blank" class="bg-velvet text-silk px-6 py-3 rounded-full hover:bg-gold-leaf hover:text-velvet transition duration-500">Instagram</a>
+            </div>
+
+            <button class="lg:hidden text-velvet" onclick="toggleMenu()">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 8h16M4 16h12"/></svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero: Curated from @dancewithasin aesthetics -->
+    <section class="relative h-screen flex items-center overflow-hidden bg-black">
+        <div class="absolute inset-0 z-0">
+            <img src="WhatsApp Image 2026-03-28 at 9.53.29 PM.jpeg" class="w-full h-full object-cover opacity-60 scale-105 animate-slow-zoom" alt="Asin Hero Performance">
+            <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/80"></div>
+        </div>
+        
+        <div class="container mx-auto px-6 md:px-12 z-10">
+            <div class="max-w-5xl">
+                <span class="text-gold-leaf tracking-[1em] uppercase text-[10px] mb-8 block animate__animated animate__fadeIn">Classical Danseuse • Performer</span>
+                <h1 class="text-white text-6xl md:text-[11rem] font-serif leading-[0.8] mb-10 animate__animated animate__fadeInUp">
+                    DANCE <br><span class="italic font-normal text-gold-leaf">WITH</span> ASIN
+                </h1>
+                <div class="flex flex-col md:flex-row md:items-center gap-8 animate__animated animate__fadeInUp animate__delay-1s">
+                    <div class="h-[1px] w-32 bg-gold-leaf hidden md:block"></div>
+                    <p class="text-white/70 text-lg font-light tracking-wide max-w-lg leading-relaxed">
+                        A visual diary of movement, mudras, and the meticulous grace of Kerala's classical heritage.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Social Handle Anchor -->
+        <div class="absolute bottom-12 left-6 md:left-12 z-10 flex items-center gap-4">
+            <span class="text-gold-leaf text-[10px] tracking-[0.3em] font-bold uppercase">@dancewithasin</span>
+        </div>
+
+        <div class="absolute bottom-12 right-6 md:right-12 flex flex-col items-center gap-6 z-10">
+            <span class="vertical-text text-white/40 text-[10px] uppercase tracking-[0.5em]">Experience the Narrative</span>
+            <div class="w-[1px] h-24 bg-gradient-to-b from-gold-leaf to-transparent"></div>
+        </div>
+    </section>
+
+    <!-- Identity: The Instagram Story -->
+    <section id="about" class="py-32 px-6 md:px-12 max-w-[1800px] mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+            <div class="section-reveal order-2 lg:order-1">
+                <div class="relative">
+                    <img src="WhatsApp Image 2026-03-28 at 9.53.29 PM (1).jpeg" class="split-image w-full rounded-sm shadow-2xl" alt="Asin Identity">
+                    <div class="absolute -bottom-12 -right-12 bg-white p-10 hidden md:block shadow-2xl border border-silk">
+                        <span class="text-gold-leaf text-xs uppercase tracking-widest mb-2 block">Current Project</span>
+                        <p class="font-serif italic text-3xl text-velvet">"The Sacred Geometry <br>of Bharatanatyam"</p>
+                    </div>
+                </div>
+            </div>
+            <div class="section-reveal order-1 lg:order-2">
+                <h2 class="text-5xl md:text-8xl font-serif mb-12 leading-tight">The Story <br><span class="italic">Behind</span> The Lens</h2>
+                <div class="space-y-10 text-lg md:text-xl font-light leading-relaxed text-charcoal/80">
+                    <p>Known digitally as <span class="text-velvet font-semibold underline decoration-gold-leaf">@dancewithasin</span>, Asin has transformed her classical practice into a digital narrative that resonates with audiences worldwide.</p>
+                    <p>Her journey began in the heritage centers of Kerala, focusing on the rigorous precision of Bharatanatyam. Today, her portfolio serves as a bridge between the ancient *Gurukul* discipline and modern artistic photography.</p>
+                </div>
+                <div class="pt-12 flex items-center gap-10">
+                    <a href="#contact" class="text-xs uppercase tracking-[0.3em] font-bold border-b-2 border-gold-leaf pb-2 hover:text-gold-leaf transition">Inquire for Performances</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sensory Detail Section: Mirroring the @dancewithasin aesthetics -->
+    <section id="artistry" class="bg-charcoal text-silk py-32 overflow-hidden">
+        <div class="container mx-auto px-6 md:px-12">
+            <div class="flex flex-col lg:flex-row items-center gap-20">
+                <div class="lg:w-1/2 section-reveal">
+                    <span class="text-gold-leaf tracking-[0.5em] uppercase text-[10px] mb-6 block">Texture & Rhythm</span>
+                    <h3 class="text-5xl md:text-7xl font-serif mb-12">The Poetry in <br><span class="italic">Specifics</span></h3>
+                    <p class="text-lg opacity-70 font-light max-w-md mb-12 leading-relaxed">
+                        Beyond the grand stage, the beauty of dance lies in the details. The sound of bronze *Chilanka*, the crisp pleats of silk, and the silent intensity of a *Mudra*.
+                    </p>
+                    <div class="grid grid-cols-2 gap-10">
+                        <div>
+                            <h4 class="text-gold-leaf font-serif text-2xl italic mb-4">Aural</h4>
+                            <p class="text-sm opacity-50">Every beat of the Ghungroo is a timed conversation with the *Nattuvanar*.</p>
+                        </div>
+                        <div>
+                            <h4 class="text-gold-leaf font-serif text-2xl italic mb-4">Visual</h4>
+                            <p class="text-sm opacity-50">The vibrant Kanchipuram borders designed to catch the temple light.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:w-1/2 section-reveal relative">
+                    <div class="grid grid-cols-2 gap-4">
+                        <img src="Screenshot 2026-04-01 214904.jpg" class="w-full aspect-[3/4] object-cover grayscale hover:grayscale-0 transition-all duration-700" alt="Detail 1">
+                        <img src="Screenshot 2026-04-01 214838.jpg" class="w-full aspect-[3/4] object-cover grayscale hover:grayscale-0 transition-all duration-700 mt-12" alt="Detail 2">
+                    </div>
+                    <div class="absolute inset-0 border-[20px] border-charcoal pointer-events-none"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Archives: The Instagram-Inspired Grid -->
+    <section id="gallery" class="py-32 px-6 md:px-12">
+        <div class="max-w-[1800px] mx-auto">
+            <div class="text-center mb-24 section-reveal">
+                <h2 class="text-6xl md:text-8xl font-serif mb-6">Archives</h2>
+                <p class="text-gold-leaf tracking-[0.5em] uppercase text-xs">Curated Highlights from the Feed</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+                <!-- Main Focus -->
+                <div class="lg:col-span-2 section-reveal insta-grid-item">
+                    <div class="image-overlay-card h-[600px]">
+                        <img src="Screenshot 2026-04-01 214913.jpg" class="w-full h-full object-cover" alt="Large Performance shot">
+                        <div class="absolute inset-0 flex flex-col justify-end p-12 z-10 text-white opacity-0 hover:opacity-100 transition-opacity duration-500">
+                            <span class="text-xs uppercase tracking-widest text-gold-leaf mb-4">Performances 2024</span>
+                            <h4 class="text-4xl font-serif italic">The Alarippu of Light</h4>
+                            <p class="text-sm opacity-60 mt-4 max-w-sm">Capturing the definitive opening moment of a recital in Thiruvananthapuram.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Secondary -->
+                <div class="section-reveal insta-grid-item">
+                    <div class="image-overlay-card h-[600px]">
+                        <img src="Screenshot 2026-04-01 214838.jpg" class="w-full h-full object-cover" alt="Portait shot">
+                        <div class="absolute inset-0 flex flex-col justify-end p-12 z-10 text-white opacity-0 hover:opacity-100 transition-opacity duration-500">
+                            <span class="text-xs uppercase tracking-widest text-gold-leaf mb-4">Portraits</span>
+                            <h4 class="text-4xl font-serif italic">Abhinaya</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detail Shot 1 -->
+                <div class="section-reveal insta-grid-item">
+                    <div class="image-overlay-card aspect-square">
+                        <img src="shuttu1234.jpeg" class="w-full h-full object-cover" alt="Detail shot">
+                        <div class="absolute inset-0 flex items-center justify-center z-10 text-white opacity-0 hover:opacity-100 transition-opacity duration-500 text-center p-8">
+                            <div>
+                                <h4 class="text-2xl font-serif italic">The Pulse</h4>
+                                <p class="text-[10px] uppercase tracking-widest mt-2">Bronze Resonance</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Identity Shot -->
+                <div class="lg:col-span-2 section-reveal insta-grid-item">
+                    <div class="image-overlay-card h-[400px]">
+                        <img src="shuttuuu123.jpeg" class="w-full h-full object-cover object-top" alt="Profile Shot">
+                        <div class="absolute bottom-10 left-10 z-10 text-white">
+                            <h4 class="text-3xl font-serif">@dancewithasin</h4>
+                            <p class="text-[10px] tracking-widest uppercase text-gold-leaf">Digital Presence</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Connect: Call to Action -->
+    <footer id="contact" class="bg-white py-32 px-6 border-t border-neutral-100">
+        <div class="max-w-[1200px] mx-auto text-center">
+            <span class="text-gold-leaf tracking-[0.5em] uppercase text-xs mb-10 block section-reveal">Collaborations & Bookings</span>
+            <h2 class="text-5xl md:text-9xl font-serif mb-16 section-reveal">Let's Dance <br><span class="italic">Together</span></h2>
+            
+            <div class="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-24 mb-24 section-reveal">
+                <a href="mailto:contact@asin.art" class="group text-xl font-light">
+                    <span class="block opacity-40 text-xs mb-2">Direct Mail</span>
+                    <span class="group-hover:text-gold-leaf transition">contact@asin.art</span>
+                </a>
+                <a href="https://instagram.com/dancewithasin" target="_blank" class="group text-xl font-light">
+                    <span class="block opacity-40 text-xs mb-2">Social Feed</span>
+                    <span class="group-hover:text-gold-leaf transition">@dancewithasin</span>
+                </a>
+            </div>
+
+            <div class="pt-20 border-t border-neutral-100 flex flex-col md:flex-row justify-between items-center text-[10px] uppercase tracking-widest opacity-40 gap-6">
+                <p>&copy; 2024 ASIN Portfolio. Classical Heritage x Modern Lens.</p>
+                <div class="flex gap-8">
+                    <a href="#" class="hover:text-velvet">Terms</a>
+                    <a href="#" class="hover:text-velvet">Privacy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth Cursor Implementation
+        const cursor = document.getElementById('cursor');
+        let mouseX = 0, mouseY = 0;
+        let cursorX = 0, cursorY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        function animateCursor() {
+            let distX = mouseX - cursorX;
+            let distY = mouseY - cursorY;
+            cursorX = cursorX + (distX * 0.15);
+            cursorY = cursorY + (distY * 0.15);
+            cursor.style.left = cursorX + 'px';
+            cursor.style.top = cursorY + 'px';
+            requestAnimationFrame(animateCursor);
+        }
+        animateCursor();
+
+        // Navbar Transition
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('main-nav');
+            if (window.scrollY > 80) {
+                nav.classList.add('nav-scrolled');
+            } else {
+                nav.classList.remove('nav-scrolled');
+            }
+        });
+
+        // Content Reveal Observer
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.section-reveal').forEach(el => observer.observe(el));
+
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            const navLinks = document.querySelector('.lg\\:flex');
+            navLinks.classList.toggle('hidden');
+            navLinks.classList.toggle('flex');
+            navLinks.classList.toggle('flex-col');
+            navLinks.classList.toggle('absolute');
+            navLinks.classList.toggle('top-0');
+            navLinks.classList.toggle('left-0');
+            navLinks.classList.toggle('bg-silk');
+            navLinks.classList.toggle('w-full');
+            navLinks.classList.toggle('h-screen');
+            navLinks.classList.toggle('justify-center');
+            navLinks.classList.toggle('z-[100]');
+            navLinks.classList.toggle('text-2xl');
+        }
+    </script>
+</body>
+</html>
